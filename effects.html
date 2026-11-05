@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Effects</title><link rel="stylesheet" href="style.css"></head>
@@ -20,9 +21,9 @@
 <h2>Flanging (slot 3)</h2>
 <p><code>CFlangeEffect</code> uses a much shorter delay: 3 ms, varying by 2 ms at 0.5 Hz. It outputs half the input plus half the delayed signal, and that interference creates notches in the sound that sweep up and down. Part of the delayed signal is fed back into the delay line to make the notches stronger. This effect's output includes the input so the sweep is audible even with <code>dry="0"</code>. <code>feedback</code> defaults to 0.3, and the song and demo use 0.6.</p>
 <h2>Reverb (slot 4)</h2>
-<p><code>CReverbEffect</code> uses a 0.2 second delay line per channel with three reflections at 29, 43, and 67 ms, mixed at 0.55, 0.35, and 0.20. The mix is fed back into the delay line, scaled by <code>decay</code>, and the reflections pile up into a fading tail. The output is half the mix. <code>decay</code> defaults to 0.55, and the song and demo use 0.75, which fades by 60 dB in about 1.3 seconds. <code>roomSize</code> scales the reflection times and stays at its default of 1.</p>
+<p><code>CReverbEffect</code> uses a 0.2 second delay line per channel with three reflections at 29, 43, and 67 ms, mixed at 0.55, 0.35, and 0.20. The mix is fed back into the delay line, scaled by <code>decay</code>, and the reflections pile up into a fading tail. The output is half the mix. <code>decay</code> defaults to 0.55, and the song and demo use 0.75, producing a longer, more noticeable reverb tail. <code>roomSize</code> scales the reflection times and stays at its default of 1.</p>
 <p>The synthesizer keeps rendering for 2 seconds after the last note so the tail can finish.</p>
 <h2>Demo timeline</h2>
 </div>
-<div class="table"><table><thead><tr><th scope="col">Time</th><th scope="col">What you hear</th></tr></thead><tbody><tr><td>0:00</td><td>Dry plucks for reference</td></tr><tr><td>0:02</td><td>Ring modulation only</td></tr><tr><td>0:04</td><td>Chorus on a held chord</td></tr><tr><td>0:06</td><td>Flanging on a held chord</td></tr><tr><td>0:08</td><td>Reverb on short notes, with space to hear the tail</td></tr><tr><td>0:10</td><td>Sends: a dry note, then reverb only, then mostly ring modulation, then a chord through all four</td></tr></tbody></table></div></main>
+<div class="table"><table><thead><tr><th scope="col">Time</th><th scope="col">What you hear</th></tr></thead><tbody><tr><td>0:00</td><td>Dry plucks for reference</td></tr><tr><td>0:02</td><td>Ring modulation applied to the notes</td></tr><tr><td>0:04</td><td>Chorus on a held chord</td></tr><tr><td>0:06</td><td>Flanging on a held chord</td></tr><tr><td>0:08</td><td>Reverb on short notes, with space to hear the tail</td></tr><tr><td>0:10</td><td>Sends: a dry note, then reverb only, then mostly ring modulation, then a chord through all four</td></tr></tbody></table></div></main>
 <footer>Joe Nguyen and Zachary Roseman. CSE 471 Project 1, Fall 2026.</footer></body></html>
