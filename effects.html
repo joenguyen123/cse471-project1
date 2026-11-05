@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Effects</title><link rel="stylesheet" href="style.css"></head>
+<body><nav aria-label="Pages"><a class="home" href="index.html">Minor Drift</a><a href="index.html">The song</a><a href="score-format.html">Score format</a><a href="final-score.html">Actual score</a><a href="subtractive.html">Subtractive synth</a><a href="effects.html" aria-current="page">Effects</a></nav>
+<main><h1>Effects</h1>
+<p class="lede">Owner: Zach. Four effects run in parallel, and the score controls how much of each note goes to each one. Every level of the grading rubric is supported.</p>
+<audio controls preload="metadata" src="effects_demo.mp3">Your browser can't play this audio. <a href="effects_demo.mp3">Download the MP3</a>.</audio>
+<p>This 14 second demo uses audio from the subtractive synthesizer only. Download the <a href="effects_demo.wav">WAV</a> or the <a href="effects_demo.score" download>score</a>.</p>
+<h2>Grading elements</h2>
+<div class="table"><table><thead><tr><th scope="col">Points</th><th scope="col">Element</th><th scope="col">In the demo</th></tr></thead><tbody><tr><td>10</td><td>Component passes audio</td><td>Dry notes, 0:00 to 0:02</td></tr><tr><td>20 and 30</td><td>One effect, then three effects</td><td>0:02 to 0:08</td></tr><tr><td>40</td><td>Controllable effects send</td><td>0:10 to 0:12</td></tr><tr><td>50</td><td>Four effects</td><td>0:02 to 0:10</td></tr></tbody></table></div>
+<div class="prose">
+<h2>Effects sends</h2>
+<p>Every note has a <code>dry</code> level (default 1) and four send levels, <code>send1</code> to <code>send4</code> (default 0). For each frame, <code>CEffectsMixer</code> multiplies each instrument's output by those levels and adds it to the dry bus and four effect buses.</p>
+<p>Each effect processes its own bus, and the final frame is the dry bus plus all four effect outputs. So one note can stay dry while the next goes only to reverb. This routing is in the shared system, with each effect as its own class derived from <code>CEffect</code>.</p>
+<p>Effect objects last for the whole song instead of being created per note. Each one receives one stereo frame at a time.</p>
+<h2>Ring modulation (slot 1)</h2>
+<p><code>CRingModEffect</code> multiplies the input by a sine wave: <code>out = in &times; sin(phase)</code>. This replaces each frequency with its sum and difference from the sine, giving a metallic, out-of-tune sound. <code>frequency</code> sets the sine in Hz. The default is 100, and the song and demo use 300.</p>
+<h2>Chorus (slot 2)</h2>
+<p><code>CChorusEffect</code> outputs a copy of the input delayed by a slowly changing amount, which slightly bends its pitch. Mixed with the dry signal, it sounds like several players. The delay is 20 ms, varying by 4 ms at 0.8 Hz, in opposite directions on the left and right to widen the sound. Linear interpolation reads the fractional delay from a 0.1 second buffer. The song and demo use the defaults for <code>delay</code>, <code>depth</code>, and <code>rate</code>.</p>
+<h2>Flanging (slot 3)</h2>
+<p><code>CFlangeEffect</code> uses a much shorter delay: 3 ms, varying by 2 ms at 0.5 Hz. It outputs half the input plus half the delayed signal, and that interference creates notches in the sound that sweep up and down. Part of the delayed signal is fed back into the delay line to make the notches stronger. This effect's output includes the input so the sweep is audible even with <code>dry="0"</code>. <code>feedback</code> defaults to 0.3, and the song and demo use 0.6.</p>
+<h2>Reverb (slot 4)</h2>
+<p><code>CReverbEffect</code> uses a 0.2 second delay line per channel with three reflections at 29, 43, and 67 ms, mixed at 0.55, 0.35, and 0.20. The mix is fed back into the delay line, scaled by <code>decay</code>, and the reflections pile up into a fading tail. The output is half the mix. <code>decay</code> defaults to 0.55, and the song and demo use 0.75, which fades by 60 dB in about 1.3 seconds. <code>roomSize</code> scales the reflection times and stays at its default of 1.</p>
+<p>The synthesizer keeps rendering for 2 seconds after the last note so the tail can finish.</p>
+<h2>Demo timeline</h2>
+</div>
+<div class="table"><table><thead><tr><th scope="col">Time</th><th scope="col">What you hear</th></tr></thead><tbody><tr><td>0:00</td><td>Dry plucks for reference</td></tr><tr><td>0:02</td><td>Ring modulation only</td></tr><tr><td>0:04</td><td>Chorus on a held chord</td></tr><tr><td>0:06</td><td>Flanging on a held chord</td></tr><tr><td>0:08</td><td>Reverb on short notes, with space to hear the tail</td></tr><tr><td>0:10</td><td>Sends: a dry note, then reverb only, then mostly ring modulation, then a chord through all four</td></tr></tbody></table></div></main>
+<footer>Joe Nguyen and Zach. CSE 471 Project 1, Fall 2026.</footer></body></html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<score bpm="120" beatspermeasure="4">
+  <effect slot="1" type="RingMod" frequency="300"/>
+  <effect slot="2" type="Chorus"/>
+  <effect slot="3" type="Flange" feedback="0.6"/>
+  <effect slot="4" type="Reverb" decay="0.75"/>
+  <instrument instrument="Subtractive">
+    <!-- Measure 1: dry reference. No effects. -->
+    <note measure="1" beat="1" duration="0.8" note="C4" wave="sawtooth" amp="0.3" attack="0.003" decay="0.12" sustain="0.5" release="0.05" cutoff="900" peak="3500" bandwidth="250" fattack="0.005" fdecay="0.15" fsustain="0.2" frelease="0.05"/>
+    <note measure="1" beat="2" duration="0.8" note="Eb4" wave="sawtooth" amp="0.3" attack="0.003" decay="0.12" sustain="0.5" release="0.05" cutoff="900" peak="3500" bandwidth="250" fattack="0.005" fdecay="0.15" fsustain="0.2" frelease="0.05"/>
+    <note measure="1" beat="3" duration="0.8" note="G4" wave="sawtooth" amp="0.3" attack="0.003" decay="0.12" sustain="0.5" release="0.05" cutoff="900" peak="3500" bandwidth="250" fattack="0.005" fdecay="0.15" fsustain="0.2" frelease="0.05"/>
+    <note measure="1" beat="4" duration="0.8" note="Bb4" wave="sawtooth" amp="0.3" attack="0.003" decay="0.12" sustain="0.5" release="0.05" cutoff="900" peak="3500" bandwidth="250" fattack="0.005" fdecay="0.15" fsustain="0.2" frelease="0.05"/>
+    <!-- Measure 2: ring modulation only (send 1). -->
+    <note measure="2" beat="1" duration="0.8" note="C4" dry="0.25" send1="1" wave="triangle" amp="0.4" attack="0.005" decay="0.15" sustain="0.6" release="0.05"/>
+    <note measure="2" beat="2" duration="0.8" note="Eb4" dry="0.25" send1="1" wave="triangle" amp="0.4" attack="0.005" decay="0.15" sustain="0.6" release="0.05"/>
+    <note measure="2" beat="3" duration="0.8" note="G4" dry="0.25" send1="1" wave="triangle" amp="0.4" attack="0.005" decay="0.15" sustain="0.6" release="0.05"/>
+    <note measure="2" beat="4" duration="0.8" note="Bb4" dry="0.25" send1="1" wave="triangle" amp="0.4" attack="0.005" decay="0.15" sustain="0.6" release="0.05"/>
+    <!-- Measure 3: chorus only (send 2) on a held chord. -->
+    <note measure="3" beat="1" duration="3.7" note="C3" dry="0.5" send2="0.8" wave="sawtooth" amp="0.11" attack="0.05" decay="0.1" sustain="0.9" release="0.15"/>
+    <note measure="3" beat="1" duration="3.7" note="G3" dry="0.5" send2="0.8" wave="sawtooth" amp="0.11" attack="0.05" decay="0.1" sustain="0.9" release="0.15"/>
+    <note measure="3" beat="1" duration="3.7" note="Eb4" dry="0.5" send2="0.8" wave="sawtooth" amp="0.11" attack="0.05" decay="0.1" sustain="0.9" release="0.15"/>
+    <note measure="3" beat="1" duration="3.7" note="Bb4" dry="0.5" send2="0.8" wave="sawtooth" amp="0.11" attack="0.05" decay="0.1" sustain="0.9" release="0.15"/>
+    <!-- Measure 4: flanging only (send 3) on a held chord. -->
+    <note measure="4" beat="1" duration="3.7" note="C3" dry="0" send3="1.1" wave="sawtooth" amp="0.11" attack="0.05" decay="0.1" sustain="0.9" release="0.15"/>
+    <note measure="4" beat="1" duration="3.7" note="G3" dry="0" send3="1.1" wave="sawtooth" amp="0.11" attack="0.05" decay="0.1" sustain="0.9" release="0.15"/>
+    <note measure="4" beat="1" duration="3.7" note="Eb4" dry="0" send3="1.1" wave="sawtooth" amp="0.11" attack="0.05" decay="0.1" sustain="0.9" release="0.15"/>
+    <note measure="4" beat="1" duration="3.7" note="Bb4" dry="0" send3="1.1" wave="sawtooth" amp="0.11" attack="0.05" decay="0.1" sustain="0.9" release="0.15"/>
+    <!-- Measure 5: reverb only (send 4) on short notes with space between them. -->
+    <note measure="5" beat="1" duration="0.2" note="C4" dry="0.6" send4="1" wave="sawtooth" amp="0.3" attack="0.003" decay="0.12" sustain="0.5" release="0.05" cutoff="900" peak="3500" bandwidth="250" fattack="0.005" fdecay="0.15" fsustain="0.2" frelease="0.05"/>
+    <note measure="5" beat="2" duration="0.2" note="G4" dry="0.6" send4="1" wave="sawtooth" amp="0.3" attack="0.003" decay="0.12" sustain="0.5" release="0.05" cutoff="900" peak="3500" bandwidth="250" fattack="0.005" fdecay="0.15" fsustain="0.2" frelease="0.05"/>
+    <note measure="5" beat="3" duration="0.2" note="Eb5" dry="0.6" send4="1" wave="sawtooth" amp="0.3" attack="0.003" decay="0.12" sustain="0.5" release="0.05" cutoff="900" peak="3500" bandwidth="250" fattack="0.005" fdecay="0.15" fsustain="0.2" frelease="0.05"/>
+    <!-- Measure 6: controllable sends. Same pitch, a different mix on each beat, then all four. -->
+    <note measure="6" beat="1" duration="0.4" note="C4" wave="sawtooth" amp="0.3" attack="0.003" decay="0.12" sustain="0.5" release="0.05" cutoff="900" peak="3500" bandwidth="250" fattack="0.005" fdecay="0.15" fsustain="0.2" frelease="0.05"/>
+    <note measure="6" beat="2" duration="0.4" note="C4" dry="0" send4="1" wave="sawtooth" amp="0.3" attack="0.003" decay="0.12" sustain="0.5" release="0.05" cutoff="900" peak="3500" bandwidth="250" fattack="0.005" fdecay="0.15" fsustain="0.2" frelease="0.05"/>
+    <note measure="6" beat="3" duration="0.4" note="C4" dry="0.4" send1="0.9" wave="sawtooth" amp="0.3" attack="0.003" decay="0.12" sustain="0.5" release="0.05" cutoff="900" peak="3500" bandwidth="250" fattack="0.005" fdecay="0.15" fsustain="0.2" frelease="0.05"/>
+    <note measure="6" beat="4" duration="0.9" note="C3" dry="0.4" send1="0.25" send2="0.4" send3="0.4" send4="0.5" wave="sawtooth" amp="0.11" attack="0.05" decay="0.1" sustain="0.9" release="0.15"/>
+    <note measure="6" beat="4" duration="0.9" note="G3" dry="0.4" send1="0.25" send2="0.4" send3="0.4" send4="0.5" wave="sawtooth" amp="0.11" attack="0.05" decay="0.1" sustain="0.9" release="0.15"/>
+    <note measure="6" beat="4" duration="0.9" note="C4" dry="0.4" send1="0.25" send2="0.4" send3="0.4" send4="0.5" wave="sawtooth" amp="0.11" attack="0.05" decay="0.1" sustain="0.9" release="0.15"/>
+    <note measure="6" beat="4" duration="0.9" note="Eb4" dry="0.4" send1="0.25" send2="0.4" send3="0.4" send4="0.5" wave="sawtooth" amp="0.11" attack="0.05" decay="0.1" sustain="0.9" release="0.15"/>
+  </instrument>
+</score>

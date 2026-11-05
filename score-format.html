@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Score format</title><link rel="stylesheet" href="style.css"></head>
+<body><nav aria-label="Pages"><a class="home" href="index.html">Minor Drift</a><a href="index.html">The song</a><a href="score-format.html" aria-current="page">Score format</a><a href="final-score.html">Actual score</a><a href="subtractive.html">Subtractive synth</a><a href="effects.html">Effects</a></nav>
+<main><h1>Score format</h1>
+<p class="lede">Scores are XML files based on the Step 5 format. The score fully defines the music: tempo, effects, and every note.</p>
+<pre><code>&lt;score bpm="100" beatspermeasure="4"&gt;
+  &lt;effect slot="4" type="Reverb" decay="0.75"/&gt;
+  &lt;instrument instrument="Subtractive"&gt;
+    &lt;note measure="1" beat="1" duration="1" note="C4" wave="sawtooth"
+          amp="0.2" attack="0.01" release="0.1"
+          cutoff="300" peak="3000" dry="0.7" send4="0.8"/&gt;
+  &lt;/instrument&gt;
+&lt;/score&gt;</code></pre>
+<h2>Tags</h2>
+<div class="table"><table><thead><tr><th scope="col">Tag</th><th scope="col">Purpose</th><th scope="col">Attributes</th></tr></thead><tbody><tr><td><code>&lt;score&gt;</code></td><td>The whole piece</td><td><code>bpm</code>, <code>beatspermeasure</code></td></tr><tr><td><code>&lt;effect&gt;</code></td><td>Puts an effect in one of four slots</td><td><code>slot</code> (1 to 4), <code>type</code>, and the effect's settings</td></tr><tr><td><code>&lt;instrument&gt;</code></td><td>A group of notes for one instrument</td><td><code>instrument</code> (<code>Subtractive</code>)</td></tr><tr><td><code>&lt;note&gt;</code></td><td>One note</td><td>See below</td></tr></tbody></table></div>
+<h2>Attributes for every note</h2>
+<div class="table"><table><thead><tr><th scope="col">Attribute</th><th scope="col">Meaning</th><th scope="col">Default</th></tr></thead><tbody><tr><td><code>measure</code>, <code>beat</code></td><td>When the note starts, counted from 1</td><td>Required</td></tr><tr><td><code>duration</code></td><td>How long the note is held, in beats</td><td>Required</td></tr><tr><td><code>note</code></td><td>Pitch name, such as <code>C4</code> or <code>Eb5</code></td><td>Required</td></tr><tr><td><code>dry</code></td><td>Level sent straight to the output</td><td>1</td></tr><tr><td><code>send1</code> to <code>send4</code></td><td>Level sent to effect slots 1 to 4</td><td>0</td></tr></tbody></table></div>
+<h2>Subtractive synthesizer attributes</h2>
+<div class="table"><table><thead><tr><th scope="col">Attribute</th><th scope="col">Meaning</th><th scope="col">Default</th></tr></thead><tbody><tr><td><code>wave</code></td><td><code>sawtooth</code>, <code>square</code>, <code>triangle</code>, or <code>pulse</code></td><td><code>sawtooth</code></td></tr><tr><td><code>amp</code></td><td>Note level</td><td>0.15</td></tr><tr><td><code>attack</code>, <code>decay</code>, <code>release</code></td><td>Amplitude envelope times, in seconds</td><td>0.005, 0.05, 0.05</td></tr><tr><td><code>sustain</code></td><td>Amplitude sustain level, 0 to 1</td><td>0.8</td></tr><tr><td><code>cutoff</code></td><td>Reson frequency in Hz. Leave it out for no filter.</td><td>Off</td></tr><tr><td><code>peak</code></td><td>Reson frequency at the top of the filter envelope, in Hz</td><td>Same as <code>cutoff</code></td></tr><tr><td><code>bandwidth</code></td><td>Width of the resonant peak in Hz</td><td>200</td></tr><tr><td><code>fattack</code>, <code>fdecay</code>, <code>frelease</code></td><td>Filter envelope times, in seconds</td><td>0.005, 0.05, 0.05</td></tr><tr><td><code>fsustain</code></td><td>Filter sustain level, 0 to 1</td><td>0.8</td></tr></tbody></table></div>
+<h2>Effect settings</h2>
+<div class="table narrow"><table><thead><tr><th scope="col">Type</th><th scope="col">Attributes</th></tr></thead><tbody><tr><td><code>RingMod</code></td><td><code>frequency</code></td></tr><tr><td><code>Chorus</code></td><td><code>delay</code>, <code>depth</code>, <code>rate</code></td></tr><tr><td><code>Flange</code></td><td><code>delay</code>, <code>depth</code>, <code>rate</code>, <code>feedback</code></td></tr><tr><td><code>Reverb</code></td><td><code>decay</code>, <code>roomSize</code></td></tr></tbody></table></div>
+<p>The <a href="effects.html">effects page</a> explains what each setting does.</p></main>
+<footer>Joe Nguyen and Zach. CSE 471 Project 1, Fall 2026.</footer></body></html>

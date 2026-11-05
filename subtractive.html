@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Subtractive synthesizer</title><link rel="stylesheet" href="style.css"></head>
+<body><nav aria-label="Pages"><a class="home" href="index.html">Minor Drift</a><a href="index.html">The song</a><a href="score-format.html">Score format</a><a href="final-score.html">Actual score</a><a href="subtractive.html" aria-current="page">Subtractive synth</a><a href="effects.html">Effects</a></nav>
+<main><h1>Subtractive synthesizer</h1>
+<p class="lede">Owner: Joe Nguyen. It starts with a harmonically rich wave, then filters it and shapes it over time. Every level of the grading rubric is supported.</p>
+<audio controls preload="metadata" src="subtractive_demo.mp3">Your browser can't play this audio. <a href="subtractive_demo.mp3">Download the MP3</a>.</audio>
+<p>This 14 second demo uses only this instrument. Download the <a href="subtractive_demo.wav">WAV</a> or the <a href="subtractive_demo.score" download>score</a>.</p>
+<h2>Grading elements</h2>
+<div class="table"><table><thead><tr><th scope="col">Points</th><th scope="col">Element</th><th scope="col">In the demo</th></tr></thead><tbody><tr><td>10</td><td>Waveform playback from tables</td><td>0:00 to 0:02</td></tr><tr><td>20</td><td>Varying pitch playback from tables</td><td>0:02 to 0:04</td></tr><tr><td>30</td><td>Envelope generation</td><td>0:04 to 0:06</td></tr><tr><td>35</td><td>Polyphony</td><td>0:06 to 0:08</td></tr><tr><td>40</td><td>Reson and the Moog sound</td><td>0:08 to 0:10</td></tr><tr><td>50</td><td>Filter envelopes</td><td>0:10 to 0:14</td></tr></tbody></table></div>
+<div class="prose">
+<h2>Wave tables</h2>
+<p><code>CBandLimitedTables</code> holds sawtooth, square, triangle, and pulse waves. The pulse wave is the optional fourth wave, and it stays high for 25% of each cycle.</p>
+<p>Each wave has 10 tables of 4,096 samples, one per octave. A table contains only the harmonics that stay below 20 kHz for the highest note using it, so high notes don't alias. A note uses the first table that covers its pitch.</p>
+<p>Harmonic levels are <code>1/h</code> for sawtooth, <code>1/h</code> on odd harmonics for square, <code>sin(0.25&pi;h)/h</code> for pulse, and <code>s/h&sup2;</code> on odd harmonics for triangle, where <code>s</code> alternates between 1 and -1. Each table is scaled to a peak of 1.</p>
+<p>The spec suggests a separate offline program for making tables. We build them once in code when the first note starts, and notes then only read from them, without calculating the waveform for each sample.</p>
+<h2>Pitch</h2>
+<p>A phase value tracks the position in the wave cycle. It advances by <code>frequency / sample rate</code> each sample, so higher notes move through the table faster. Linear interpolation fills in values between table entries.</p>
+<h2>Envelopes</h2>
+<p><code>CADSR</code> produces one level from 0 to 1 per sample, moving through attack, decay, and sustain until the note's duration ends. The release then fades from the current level to 0, even if the note ended early, which prevents clicks. A note finishes when its amplitude release ends, so release time extends past the note's duration.</p>
+<h2>Polyphony</h2>
+<p>The sequencer creates a separate <code>CSubtractiveInstrument</code> for each note, with its own phase, envelopes, and filter state. Any number of notes can start and stop independently, and the mixer adds them together.</p>
+<h2>Reson and the Moog sound</h2>
+<p><code>CReson</code> is a two-pole recursive filter:</p>
+<pre><code>y[n] = g&middot;x[n] + 2R&middot;cos(&theta;)&middot;y[n-1] - R&sup2;&middot;y[n-2]
+&theta; = 2&pi;f / sample rate
+R = exp(-&pi;&middot;bandwidth / sample rate)</code></pre>
+<p>The poles create the resonant peak at frequency <code>f</code>. Instead of the usual gain that normalizes the peak, the gain is set so that low frequencies pass at full level, which keeps the bass of a note under the moving peak and sounds closer to a Moog than a plain band-pass filter. To keep narrow peaks from getting too loud, the output is then reduced by the square root of the peak gain.</p>
+<h2>Filter envelopes</h2>
+<p>Each note has a second <code>CADSR</code> that drives the filter. Its level moves the Reson frequency between <code>cutoff</code> and <code>peak</code> on a log scale, recalculated every sample:</p>
+<pre><code>f = cutoff &times; (peak / cutoff)<sup>level</sup></code></pre>
+<p>A fast envelope gives the bass plucks their snap from bright to dark, and a slow one gives the pad and wah bass their long sweeps.</p>
+<h2>Demo timeline</h2>
+</div>
+<div class="table"><table><thead><tr><th scope="col">Time</th><th scope="col">What you hear</th></tr></thead><tbody><tr><td>0:00</td><td>Sawtooth, square, triangle, and pulse at the same pitch</td></tr><tr><td>0:02</td><td>A sawtooth runs up from C3 to C7</td></tr><tr><td>0:04</td><td>Two plucks, then a slow swell with a long release</td></tr><tr><td>0:06</td><td>A held chord, then a strum with overlapping notes</td></tr><tr><td>0:08</td><td>A low note with the resonant peak set differently on each note</td></tr><tr><td>0:10</td><td>Bass plucks with a fast filter envelope</td></tr><tr><td>0:12</td><td>A chord that slowly opens and closes</td></tr></tbody></table></div></main>
+<footer>Joe Nguyen and Zach. CSE 471 Project 1, Fall 2026.</footer></body></html>

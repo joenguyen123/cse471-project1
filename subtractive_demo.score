@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<score bpm="120" beatspermeasure="4">
+  <instrument instrument="Subtractive">
+    <!-- Measure 1: table playback. Sawtooth, square, triangle, pulse at the same pitch. -->
+    <note measure="1" beat="1" duration="0.9" note="C4" wave="sawtooth" amp="0.2" attack="0.01" decay="0.01" sustain="1" release="0.02"/>
+    <note measure="1" beat="2" duration="0.9" note="C4" wave="square" amp="0.2" attack="0.01" decay="0.01" sustain="1" release="0.02"/>
+    <note measure="1" beat="3" duration="0.9" note="C4" wave="triangle" amp="0.2" attack="0.01" decay="0.01" sustain="1" release="0.02"/>
+    <note measure="1" beat="4" duration="0.9" note="C4" wave="pulse" amp="0.2" attack="0.01" decay="0.01" sustain="1" release="0.02"/>
+    <!-- Measure 2: varying pitch. A sawtooth runs up to a high note with no aliasing. -->
+    <note measure="2" beat="1.0" duration="0.45" note="C3" wave="sawtooth" amp="0.18" attack="0.005" decay="0.01" sustain="1" release="0.02"/>
+    <note measure="2" beat="1.5" duration="0.45" note="G3" wave="sawtooth" amp="0.18" attack="0.005" decay="0.01" sustain="1" release="0.02"/>
+    <note measure="2" beat="2.0" duration="0.45" note="C4" wave="sawtooth" amp="0.18" attack="0.005" decay="0.01" sustain="1" release="0.02"/>
+    <note measure="2" beat="2.5" duration="0.45" note="G4" wave="sawtooth" amp="0.18" attack="0.005" decay="0.01" sustain="1" release="0.02"/>
+    <note measure="2" beat="3.0" duration="0.45" note="C5" wave="sawtooth" amp="0.18" attack="0.005" decay="0.01" sustain="1" release="0.02"/>
+    <note measure="2" beat="3.5" duration="0.45" note="G5" wave="sawtooth" amp="0.18" attack="0.005" decay="0.01" sustain="1" release="0.02"/>
+    <note measure="2" beat="4.0" duration="0.45" note="C6" wave="sawtooth" amp="0.18" attack="0.005" decay="0.01" sustain="1" release="0.02"/>
+    <note measure="2" beat="4.5" duration="0.45" note="C7" wave="sawtooth" amp="0.18" attack="0.005" decay="0.01" sustain="1" release="0.02"/>
+    <!-- Measure 3: amplitude envelopes. Two plucks, then a slow swell with a long release. -->
+    <note measure="3" beat="1" duration="0.4" note="E4" wave="square" amp="0.22" attack="0.002" decay="0.15" sustain="0.1" release="0.05"/>
+    <note measure="3" beat="1.5" duration="0.4" note="G4" wave="square" amp="0.22" attack="0.002" decay="0.15" sustain="0.1" release="0.05"/>
+    <note measure="3" beat="2" duration="1.6" note="C4" wave="triangle" amp="0.3" attack="0.5" decay="0.1" sustain="0.7" release="0.4"/>
+    <!-- Measure 4: polyphony. A chord, then a strum whose notes overlap. -->
+    <note measure="4" beat="1" duration="1.8" note="C3" wave="sawtooth" amp="0.1" attack="0.02" decay="0.1" sustain="0.8" release="0.1"/>
+    <note measure="4" beat="1" duration="1.8" note="Eb4" wave="sawtooth" amp="0.1" attack="0.02" decay="0.1" sustain="0.8" release="0.1"/>
+    <note measure="4" beat="1" duration="1.8" note="G4" wave="sawtooth" amp="0.1" attack="0.02" decay="0.1" sustain="0.8" release="0.1"/>
+    <note measure="4" beat="1" duration="1.8" note="Bb4" wave="sawtooth" amp="0.1" attack="0.02" decay="0.1" sustain="0.8" release="0.1"/>
+    <note measure="4" beat="3.0" duration="1.8" note="F3" wave="square" amp="0.08" attack="0.005" decay="0.3" sustain="0.5" release="0.1"/>
+    <note measure="4" beat="3.15" duration="1.6500000000000001" note="C4" wave="square" amp="0.08" attack="0.005" decay="0.3" sustain="0.5" release="0.1"/>
+    <note measure="4" beat="3.3" duration="1.5" note="F4" wave="square" amp="0.08" attack="0.005" decay="0.3" sustain="0.5" release="0.1"/>
+    <note measure="4" beat="3.45" duration="1.35" note="Ab4" wave="square" amp="0.08" attack="0.005" decay="0.3" sustain="0.5" release="0.1"/>
+    <note measure="4" beat="3.6" duration="1.2000000000000002" note="C5" wave="square" amp="0.08" attack="0.005" decay="0.3" sustain="0.5" release="0.1"/>
+    <!-- Measure 5: Reson. A resonant peak set to a different frequency on each note. -->
+    <note measure="5" beat="1.0" duration="0.45" note="C2" wave="sawtooth" amp="0.5" attack="0.005" decay="0.02" sustain="1" release="0.03" cutoff="300" bandwidth="60"/>
+    <note measure="5" beat="1.5" duration="0.45" note="C2" wave="sawtooth" amp="0.5" attack="0.005" decay="0.02" sustain="1" release="0.03" cutoff="500" bandwidth="60"/>
+    <note measure="5" beat="2.0" duration="0.45" note="C2" wave="sawtooth" amp="0.5" attack="0.005" decay="0.02" sustain="1" release="0.03" cutoff="800" bandwidth="60"/>
+    <note measure="5" beat="2.5" duration="0.45" note="C2" wave="sawtooth" amp="0.5" attack="0.005" decay="0.02" sustain="1" release="0.03" cutoff="1300" bandwidth="60"/>
+    <note measure="5" beat="3.0" duration="0.45" note="C2" wave="sawtooth" amp="0.5" attack="0.005" decay="0.02" sustain="1" release="0.03" cutoff="2000" bandwidth="60"/>
+    <note measure="5" beat="3.5" duration="0.45" note="C2" wave="sawtooth" amp="0.5" attack="0.005" decay="0.02" sustain="1" release="0.03" cutoff="3000" bandwidth="60"/>
+    <note measure="5" beat="4.0" duration="0.45" note="C2" wave="sawtooth" amp="0.5" attack="0.005" decay="0.02" sustain="1" release="0.03" cutoff="2000" bandwidth="60"/>
+    <note measure="5" beat="4.5" duration="0.45" note="C2" wave="sawtooth" amp="0.5" attack="0.005" decay="0.02" sustain="1" release="0.03" cutoff="1000" bandwidth="60"/>
+    <!-- Measures 6 and 7: filter envelopes. Bass plucks that snap open, then a slow chord sweep. -->
+    <note measure="6" beat="1" duration="0.9" note="C2" wave="sawtooth" amp="0.55" attack="0.003" decay="0.1" sustain="0.8" release="0.05" cutoff="150" peak="3500" bandwidth="80" fattack="0.01" fdecay="0.3" fsustain="0" frelease="0.05"/>
+    <note measure="6" beat="2" duration="0.9" note="C2" wave="sawtooth" amp="0.55" attack="0.003" decay="0.1" sustain="0.8" release="0.05" cutoff="150" peak="3500" bandwidth="80" fattack="0.01" fdecay="0.3" fsustain="0" frelease="0.05"/>
+    <note measure="6" beat="3" duration="0.9" note="Eb2" wave="sawtooth" amp="0.55" attack="0.003" decay="0.1" sustain="0.8" release="0.05" cutoff="150" peak="3500" bandwidth="80" fattack="0.01" fdecay="0.3" fsustain="0" frelease="0.05"/>
+    <note measure="6" beat="4" duration="0.9" note="F2" wave="sawtooth" amp="0.55" attack="0.003" decay="0.1" sustain="0.8" release="0.05" cutoff="150" peak="3500" bandwidth="80" fattack="0.01" fdecay="0.3" fsustain="0" frelease="0.05"/>
+    <note measure="7" beat="1" duration="3.8" note="C3" wave="sawtooth" amp="0.3" attack="0.05" decay="0.1" sustain="0.9" release="0.25" cutoff="200" peak="5000" bandwidth="100" fattack="1.0" fdecay="0.9" fsustain="0" frelease="0.2"/>
+    <note measure="7" beat="1" duration="3.8" note="G3" wave="sawtooth" amp="0.3" attack="0.05" decay="0.1" sustain="0.9" release="0.25" cutoff="200" peak="5000" bandwidth="100" fattack="1.0" fdecay="0.9" fsustain="0" frelease="0.2"/>
+    <note measure="7" beat="1" duration="3.8" note="Eb4" wave="sawtooth" amp="0.3" attack="0.05" decay="0.1" sustain="0.9" release="0.25" cutoff="200" peak="5000" bandwidth="100" fattack="1.0" fdecay="0.9" fsustain="0" frelease="0.2"/>
+    <note measure="7" beat="1" duration="3.8" note="Bb4" wave="sawtooth" amp="0.3" attack="0.05" decay="0.1" sustain="0.9" release="0.25" cutoff="200" peak="5000" bandwidth="100" fattack="1.0" fdecay="0.9" fsustain="0" frelease="0.2"/>
+  </instrument>
+</score>
