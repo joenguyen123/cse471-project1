@@ -13,7 +13,7 @@
 <div class="table narrow"><table><tbody><tr><td>Length</td><td>1:20</td></tr><tr><td>Format</td><td>44,100 Hz, 16-bit stereo</td></tr><tr><td>Notes in the score</td><td>490</td></tr><tr><td>Tempo</td><td>100 beats per minute, 4/4</td></tr></tbody></table></div>
 </div><div>
 <h2>Who built what</h2>
-<div class="table narrow"><table><tbody><tr><td><a href="subtractive.html">Subtractive synthesizer</a></td><td>Joe Nguyen</td></tr><tr><td><a href="effects.html">Effects</a></td><td>Zach</td></tr><tr><td>Sequencer and audio routing</td><td>Both</td></tr></tbody></table></div>
+<div class="table narrow"><table><tbody><tr><td><a href="subtractive.html">Subtractive synthesizer</a></td><td>Joe Nguyen</td></tr><tr><td><a href="effects.html">Effects</a></td><td>Zachary Roseman</td></tr><tr><td>Sequencer and audio routing</td><td>Both</td></tr></tbody></table></div>
 </div></div>
 <h2>Where each feature is used</h2>
 <div class="table"><table><thead><tr><th scope="col">Feature</th><th scope="col">Where you can hear it</th></tr></thead><tbody><tr><td>Sawtooth wave</td><td>Pad and bass</td></tr><tr><td>Square wave</td><td>Lead melody</td></tr><tr><td>Pulse wave</td><td>Arpeggio</td></tr><tr><td>Triangle wave</td><td>Bells in the breakdown</td></tr><tr><td>Amplitude envelopes</td><td>Slow pad swells, short bass and arpeggio notes</td></tr><tr><td>Polyphony</td><td>Four-note pad chords under the bass, arpeggio, and lead</td></tr><tr><td>Reson filter</td><td>Bass, pad, and lead</td></tr><tr><td>Filter envelopes</td><td>Bass plucks, slow pad sweeps, wah bass in the breakdown</td></tr><tr><td>Ring modulation</td><td>Bells in the breakdown</td></tr><tr><td>Chorus</td><td>Pad, except measures 9 to 12</td></tr><tr><td>Flanging</td><td>Arpeggio, and pad in measures 9 to 12</td></tr><tr><td>Reverb</td><td>Pad, lead, and bells</td></tr><tr><td>Effect sends</td><td>Every part has its own mix of dry signal and effects</td></tr></tbody></table></div>
@@ -23,7 +23,7 @@
 <p>The audio is streamed one frame at a time, and the song is never stored in an array. The only stored audio is short: the one-cycle wave tables, and effect delay lines of at most 0.2 seconds.</p>
 <p>We started from the Step 5 synthesizer. We moved two jobs into the shared system: <code>CInstrument</code> reads each note's send levels, and <code>CEffectsMixer</code> handles routing and mixing. <code>CreateInstrument</code> builds the right instrument for each note.</p>
 <h2>Use of AI</h2>
-<p>This piece was composed with AI help. Claude wrote the melody, chords, arrangement, and the script that generates the score, based on the project's requirements. AI assistants also helped write and test the code. Claude was used for the synthesizer and ChatGPT for the effects.</p>
+<p>Claude and ChatGPT were used during the development of this project. Claude helped generate the musical composition and XML score, and assisted with the subtractive synthesizer. ChatGPT helped develop and debug the four audio effects. Both tools also provided assistance with testing, integration, and documentation. Joe Nguyen and Zachary Roseman reviewed, compiled, tested, and integrated the final project.</p>
 </div></main>
 <footer>Joe Nguyen and Zachary Roseman. CSE 471 Project 1, Fall 2026.</footer><script>
 (function(){var a=document.getElementById('player'),h=document.getElementById('head'),i=document.getElementById('spec'),b=document.querySelectorAll('#parts button');
